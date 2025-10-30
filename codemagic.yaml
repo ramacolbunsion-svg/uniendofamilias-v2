@@ -1,0 +1,22 @@
+
+workflows:
+  build-uniendo-familias:
+    name: Build Uniendo Familias APK
+    max_build_duration: 60
+    environment:
+      flutter: stable
+      vars:
+        PACKAGE_NAME: "com.uniendofamilias.app"
+    scripts:
+      - name: Get Flutter packages
+        script: |
+          flutter pub get
+      - name: Build release APK
+        script: |
+          flutter build apk --release
+    artifacts:
+      - build/app/outputs/flutter-apk/app-release.apk
+    publishing:
+      email:
+        recipients:
+          - ramacolbinsion@gmail.com
